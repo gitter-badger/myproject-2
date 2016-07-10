@@ -1,0 +1,17 @@
+{% extends 'services/base.html' %}
+
+
+{% block content %}
+{% for service in services %}
+<div class="col-sm-8">
+    <h3>{{service.service_name}}</h3>
+    <p>{{ service.description | linebreaksbr }}</p>
+</div>
+<div class="col-sm-4">
+    <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive"
+         style="width:100%" alt="Image"><br>
+</div>
+{% empty %}
+
+{% endfor %}
+{% endblock content %}

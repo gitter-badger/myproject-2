@@ -1,0 +1,10 @@
+{% extends 'appointment/base.html' %}
+
+{% block container %}
+
+<p>
+    {{ msg }}
+    <a href="{% url 'appointment:bookings' %}">My Bookings</a>
+</p>
+
+{% endblock container %}

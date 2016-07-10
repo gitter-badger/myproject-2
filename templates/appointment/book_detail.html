@@ -1,0 +1,51 @@
+{% extends 'appointment/base.html' %}
+
+{% block container %}
+
+    {% if user == appointment.customer %}
+        <h1>{{ appointment.customer }}</h1>
+        <ul class="book_detail">
+            <li>
+                        booking id: {{ appointment.pk }}
+            </li>
+            <li>
+                        Car make: {{ appointment.car_make }}
+
+            </li>
+            <li>
+                        Car model: {{ appointment.car_model }}
+
+            </li>
+            <li>
+                        Year of make: {{ appointment.year_of_make }}
+
+            </li>
+            <li>
+                        Location: {{ appointment.location }}
+
+            </li>
+            <li>
+                        Pick up date: {{ appointment.pick_up_date }}
+
+            </li>
+            <li>
+                        Booking date: {{ appointment.booking_date }}
+
+            </li>
+            <li>
+                        Service type: {{ appointment.service_type }}
+
+            </li>
+            <li>
+                        Additional service: {{ appointment.additional_service }}
+
+            </li>
+            <li>
+                        Status: {{ appointment.status }}
+
+            </li>
+        </ul>
+
+    {% endif %}
+
+{% endblock container %}

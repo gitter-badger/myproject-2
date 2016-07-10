@@ -1,0 +1,18 @@
+{% extends 'appointment/base.html' %}
+
+{% block container %}
+<h3>My Bookings</h3>
+  {% for appointment in appointments %}
+    {% if user == appointment.customer %}
+    <div class="appointment">
+      <h1><a href="{{ appointment.get_absolute_url }}">{{ appointment.pk }}</a></h1>
+
+      <p>{{ appointment.id }}</p>
+      <p>{{ appointment.pick_up_date }}</p>
+    </div>
+    {% endif %}
+  {% empty %}
+      <p>You have no appointments</p>
+  {% endfor %}
+
+{% endblock container %}

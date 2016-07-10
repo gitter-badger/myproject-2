@@ -1,0 +1,22 @@
+{% extends 'appointment/base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head %}
+  <script src="/static/scripts/main.js"></script>
+{% endblock head %}
+
+
+{% block container %}
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <h3>Book an Appointment</h3>
+        <form method="POST" class="appointment-book-form">{% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="save btn btn-primary">Continue</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock container %}

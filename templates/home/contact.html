@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block navbar %}
+<ul class="nav navbar-nav">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">Services
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {% for service in services %}
+          <li><a href="{{ service.get_absolute_url }}">{{ service.service_name }}</a></li>
+          {% empty %}
+          <li>Empty</li>
+          {% endfor %}
+        </ul>
+      </li>
+    <li class="active"><a href="{% url 'contact' %}">Contact Us</a></li>
+    <li><a href="{% url 'appointment:book_appointment' %}">Book an Appointment</a></li>
+</ul>
+{% endblock navbar %}
+
+
+{% block container %}
+<div class="row">
+    <div class="col-sm-6 col-md-9">
+        add something to display
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <h1>Enquiry</h1>
+        <form role="form" action="" method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock container %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+<ul class="nav navbar-nav">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li class="active">
+        <a class="dropdown-toggle" data-toggle="dropdown">Services
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          {% for service in services %}
+          <li><a href="{{ service.get_absolute_url }}">{{ service.service_name }}</a></li>
+          {% empty %}
+          <li>Empty</li>
+          {% endfor %}
+        </ul>
+      </li>
+    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    <li><a href="{% url 'appointment:book_appointment' %}">Book an Appointment</a></li>
+</ul>
+
+{% endblock navbar %}
+
+{% block container %}
+<div class="header text-center">
+    <h1>Services</h1>
+</div><br>
+
+    <div class="row">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+{% endblock container %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+<div class="header text-center">
+    <h3>Services</h3>
+</div><br>
+
+    {% for service in services %}
+    <div class="row">
+        <div class="col-sm-8">
+            <!--<p>published: {{ service.published_date }}</p>-->
+            <h1><a href="{{ service.get_absolute_url }}">{{ service.service_name }}</a> </h1>
+            <p>{{ service.description | truncatewords:20 | linebreaksbr }}</p>
+        </div>
+        <div class="col-sm-4">
+            <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive"
+                 style="width:100%" alt="Image"><br>
+        </div>
+    </div>
+
+        
+    {% empty %}
+        <p>No services are found!</p>
+    {% endfor %}
+{% endblock container %}
