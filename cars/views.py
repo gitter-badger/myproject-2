@@ -35,17 +35,17 @@ def car_model():
 
 def get_car_model(request):
     query = request.GET['make']
-    car_make = CarMake.objects.values_list('id', 'make')
-    car_model = CarModel.objects.values_list('model')
-    for row in car_make:
+    make = CarMake.objects.values_list('id', 'make')
+    model = CarModel.objects.values_list('model')
+    for row in make:
         i = 0
         if query == row[i + 1]:
             val = row[i]
-            car_model = CarModel.objects.filter(make=val).values_list('model', flat=True)
+            model = CarModel.objects.filter(make=val).values_list('model', flat=True)
             break
 
-    car_model_list = list(car_model)
-    json_data = json.dumps(car_model_list)
+    model_list = list(model)
+    json_data = json.dumps(model_list)
 
     response = HttpResponse(json_data, content_type='application/json')
 

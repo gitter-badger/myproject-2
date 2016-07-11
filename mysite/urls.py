@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from services.views import home, about, contact
+from services.views import home, about, contact, profile
 import allauth.account.views
 
 
@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^accounts/login/$', allauth.account.views.login, name='login'),
     url(r'^accounts/logout/$', allauth.account.views.logout, name='logout'),
     url(r'^accounts/signup/$', allauth.account.views.signup, name='signup'),
+    url(r'^profile/$', profile, name='profile'),
 ]

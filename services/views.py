@@ -7,7 +7,6 @@ from django.conf import settings
 from django.template.loader import get_template
 from django.core.mail import EmailMessage, send_mail
 
-
 from .models import Service
 from .forms import ContactForm
 
@@ -68,7 +67,10 @@ def contact(request):
             # send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@example.com'],
             # fail_silently=False)
 
-            send_mail('Test mail', 'this is working', settings.EMAIL_HOST_USER, ['bahetishrey@gmail.com'],
+            # send_mail('Test mail', 'this is working', settings.EMAIL_HOST_USER, ['sbshrey@gmail.com'],
+            #           fail_silently=False)
+
+            send_mail('New Appointment form submission', content, settings.EMAIL_HOST_USER, ['bahetishrey@gmail.com'],
                       fail_silently=False)
 
             messages.success(request, 'Contact is saved and further info will be email to you.')
@@ -89,7 +91,7 @@ def service_list(request):
     return render(request, 'services/list.html', context)
 
 
-def service_detail(request, id=None):
+def service_detail(request, id):
     services = Service.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     service = get_object_or_404(Service, id=id)
     context = {
@@ -101,4 +103,8 @@ def service_detail(request, id=None):
 
 def get_services():
     services = Service.objects.values_list('service_name', flat=True)
-    return [(i, services[i]) for i in range(len(services))]
+    return [(services[i], services[i]) for i in range(len(services))]
+
+
+def profile(request):
+    return render(request, 'profile.html', {})

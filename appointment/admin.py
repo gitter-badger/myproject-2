@@ -7,6 +7,7 @@ from .models import Appointment
 
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'customer',
         'car_make',
         'car_model',

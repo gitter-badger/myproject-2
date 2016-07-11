@@ -42,12 +42,11 @@ ALLOWED_HOSTS = []
 #     http://accounts.google.com/displayunlockcaptcha
 # ...
 
-EMAIL_HOST = 'smtp.google.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sbshrey@gmail.com'
 EMAIL_HOST_PASSWORD = 'rvssb-1994'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
 
 # Application definition
 
@@ -121,7 +120,32 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_USERNAME_REQUIRED = True
+
+ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # set to mandatory for blocking the user from logging
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'appointment.forms.SignupForm'
+# A string pointing to a custom form class (e.g. 'myapp.forms.SignupForm') that is used during signup
+# to ask the user for additional input (e.g. newsletter signup, birth date).
+# This class should implement a def signup(self, request, user) method,
+# where user represents the newly signed up user.
+
+
+# ACCOUNT_FORMS (={})
+
+ACCOUNT_PASSWORD_MIN_LENGTH = 6
+
+# ACCOUNT_SESSION_REMEMBER (=None)
+# Set to None to ask the user ("Remember me?"), False to not remember, and True to always remember.
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -159,6 +183,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Kolkata'
+
+DATE_INPUT_FORMATS = 'DD/MM/YYYY'
 
 USE_I18N = True
 

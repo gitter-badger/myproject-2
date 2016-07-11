@@ -8,6 +8,19 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    var dateToday = new Date();
+
+    $('#pick_up_date').datetimepicker({
+        format: 'YYYY-MM-DD HH:MM',
+//        changeMonth: true,
+//        numberOfMonths: 3,
+        minDate: dateToday,
+//        maxDate: 120,
+
+    });
+});
+
 // AJAX for posting
 function create_appointment() {
     console.log("create appointment is working!") // sanity check
@@ -38,3 +51,4 @@ function create_appointment() {
         }
     });
 };
+

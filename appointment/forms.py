@@ -1,21 +1,15 @@
 from django import forms
+from django.forms import DateField
+
+from django.conf import settings
 
 from .models import Appointment
 
 from datetimewidget.widgets import DateWidget
-from cars.models import CarMake, CarModel
 
 
 class AppointmentForm(forms.ModelForm):
-    # def __init__(self, *args, **kwargs):
-    #     super(AppointmentForm, self).__init__(*args, **kwargs)
-    #
-    #     self.fields['car_make'] = forms.ModelChoiceField(
-    #         queryset=CarMake.objects.values_list('make', flat=True)
-    #     )
-    #     self.fields['car_model'] = forms.ModelChoiceField(
-    #         queryset=CarModel.objects.values_list('model', flat=True)
-    #     )
+    # pick_up_date = DateField(input_formats=settings.DATE_INPUT_FORMATS)
 
     class Meta:
         model = Appointment
@@ -25,7 +19,17 @@ class AppointmentForm(forms.ModelForm):
         }
         exclude = {
             'customer',
-            'booking_id',
+            'id',
             'booking_date',
             'status',
         }
+
+
+class SignupForm(forms.Form):
+    first_name = forms.CharField(max_length=30, label='First Name')
+    last_name = forms.CharField(max_length=30, label='Last Name')
+
+    def signup(self, request, user):
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()

@@ -1,0 +1,22 @@
+Thank you for booking an appointment.
+We will soon get in touch with you.
+
+Booking id: {{ appointment_id }}
+
+Customer Name: {{ customer }}
+
+Car Make: {{ car_make }}
+
+Car Model: {{ car_model }}
+
+Year of Make: {{ year_of_make }}
+
+Location: {{ location }}
+
+Service Type: {{ service_type }}
+
+Additional Service: {{ additional_service }}
+
+Pick up date: {{ pick_up_date }}
+
+Booking date: {{ booking_date }}
